@@ -408,6 +408,15 @@ main section:first-of-type {
   font-size: 0.93rem;
 }
 
+.menu-item-translation {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  font-weight: 500;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
 .menu-note {
   margin: 18px 0 0;
   font-size: 0.91rem;

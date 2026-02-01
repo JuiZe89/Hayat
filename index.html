@@ -595,6 +595,32 @@
         }
       ];
 
+      // Deutsche Beschreibungen für Gerichte ohne deutsche Bezeichnung
+      const translationMap = {
+        3: "Joghurt-Gurken-Dip mit Knoblauch",
+        4: "Würziger Spinataufstrich mit Joghurt",
+        5: "Knusprige Yufka-Röllchen mit Käse",
+        6: "Karotten-Walnuss-Aufstrich mit Gewürzen",
+        7: "Paprika-Walnuss-Creme mit Granatapfelsirup",
+        8: "Cremiger Joghurt-Dip mit Kräutern und Knoblauch",
+        12: "Geräucherte Auberginencreme mit Joghurt",
+        14: "Scharfer Tomaten-Paprika-Salat",
+        15: "Kichererbsenpüree mit Tahin",
+        37: "Kichererbsen-Spinat-Bällchen mit Kräutern",
+        46: "Geröstetes Fladenbrot in Brühe mit Joghurt-Butter",
+        47: "Gebratene Leberwürfel nach Balkan-Art",
+        59: "Lammspieß vom Grill",
+        60: "Hähnchenspieß vom Grill",
+        62: "Gegrillte Hackfleischbällchen",
+        63: "Hackbällchen mit Feta-Füllung",
+        64: "Scharfer Hackfleischspieß aus Adana",
+        65: "Scharfer Hackfleischspieß mit Joghurtsauce",
+        66: "Spieße in fruchtiger Tomatensauce",
+        85: "Zarter Fleischspieß mit Salat und Reis",
+        86: "Hackfleischbällchen mit Salat und Reis",
+        91: "Dönerfleisch auf Fladenbrot mit Tomatensauce und Joghurt"
+      };
+
       document.addEventListener("DOMContentLoaded", () => {
         // Batch DOM operations to avoid forced reflows
         requestAnimationFrame(() => {
@@ -641,6 +667,14 @@
                     const priceHtml = item.price
                       ? `<span class="menu-item-price">${item.price}</span>`
                       : "";
+                    const translationHtml = (() => {
+                      const match = item.name.match(/^(\\d+)/);
+                      if (!match) return "";
+                      const text = translationMap[Number(match[1])];
+                      return text
+                        ? `<p class="menu-item-translation">${text}</p>`
+                        : "";
+                    })();
                     const descriptionHtml = item.description
                       ? `<p class="menu-item-description">${item.description}</p>`
                       : "";
@@ -650,6 +684,7 @@
                           <span class="menu-item-name">${item.name}</span>
                           ${priceHtml}
                         </div>
+                        ${translationHtml}
                         ${descriptionHtml}
                       </li>
                     `;
