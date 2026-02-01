@@ -222,24 +222,36 @@
     </script>
     <div id="cookie-consent-banner" class="cookie-banner" hidden>
       <p class="cookie-banner-text">Wir verwenden keine Tracking-Cookies. Ihre Einwilligung speichern wir lokal im Browser. Google Maps kann Cookies setzen. Mehr in unserer <a href="Datenschutz.html">Datenschutzerklärung</a>.</p>
-      <button type="button" id="cookie-consent-btn" class="primary-button" onclick="var b=document.getElementById('cookie-consent-banner');if(b){try{localStorage.setItem('cookie_consent','accepted');}catch(e){} b.setAttribute('hidden',''); b.classList.add('cookie-banner--hidden');}">Verstanden</button>
+      <button type="button" id="cookie-consent-btn" class="primary-button">Verstanden</button>
     </div>
     <script>
       (function() {
-        var banner = document.getElementById('cookie-consent-banner');
-        var btn = document.getElementById('cookie-consent-btn');
-        try {
-          if (banner && !localStorage.getItem('cookie_consent')) { banner.removeAttribute('hidden'); banner.classList.remove('cookie-banner--hidden'); }
-        } catch (e) {}
-        function hideBanner() {
+        function initCookieBanner() {
+          var banner = document.getElementById('cookie-consent-banner');
+          var btn = document.getElementById('cookie-consent-btn');
           if (!banner) return;
-          try { localStorage.setItem('cookie_consent', 'accepted'); } catch (e) {}
-          banner.setAttribute('hidden', '');
-          banner.classList.add('cookie-banner--hidden');
+          try {
+            if (!localStorage.getItem('cookie_consent')) { banner.removeAttribute('hidden'); banner.classList.remove('cookie-banner--hidden'); }
+          } catch (e) {}
+          function hideBanner() {
+            try { localStorage.setItem('cookie_consent', 'accepted'); } catch (e) {}
+            banner.setAttribute('hidden', '');
+            banner.classList.add('cookie-banner--hidden');
+          }
+          function handleConsentClick(ev) {
+            var t = ev.target;
+            while (t && t !== banner) {
+              if (t.id === 'cookie-consent-btn') { ev.preventDefault(); hideBanner(); return; }
+              t = t.parentNode;
+            }
+          }
+          document.addEventListener('click', handleConsentClick);
+          document.addEventListener('touchend', handleConsentClick, { passive: false });
         }
-        if (btn && banner) {
-          btn.addEventListener('click', hideBanner);
-          btn.addEventListener('touchend', function(ev) { ev.preventDefault(); hideBanner(); }, { passive: false });
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initCookieBanner);
+        } else {
+          initCookieBanner();
         }
       })();
     </script>
