@@ -920,5 +920,17 @@
         }
       });
     </script>
+    <div id="cookie-consent-banner" class="cookie-banner" hidden>
+      <p class="cookie-banner-text">Wir verwenden keine Tracking-Cookies. Ihre Einwilligung speichern wir lokal im Browser. Google Maps kann Cookies setzen. Mehr in unserer <a href="Datenschutz.html">Datenschutzerklärung</a>.</p>
+      <button type="button" id="cookie-consent-btn" class="primary-button">Verstanden</button>
+    </div>
+    <script>
+      (function() {
+        var banner = document.getElementById('cookie-consent-banner');
+        var btn = document.getElementById('cookie-consent-btn');
+        if (banner && !localStorage.getItem('cookie_consent')) banner.removeAttribute('hidden');
+        if (btn && banner) btn.addEventListener('click', function() { localStorage.setItem('cookie_consent', 'accepted'); banner.setAttribute('hidden', ''); });
+      })();
+    </script>
   </body>
 </html>
