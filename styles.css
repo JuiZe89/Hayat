@@ -606,7 +606,20 @@ main section:first-of-type {
   max-width: 420px;
 }
 
-/* Cookie-Consent-Banner */
+/* Cookie-Consent: Overlay und Banner liegen ueber allem (z. B. Google Maps) */
+.cookie-consent-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: default;
+}
+
+.cookie-consent-overlay[hidden],
+.cookie-consent-overlay.cookie-banner--hidden {
+  display: none !important;
+}
+
 .cookie-banner {
   position: fixed;
   bottom: 0;
@@ -623,12 +636,20 @@ main section:first-of-type {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  z-index: 9999;
+  z-index: 2147483647;
+  pointer-events: auto;
 }
 
 .cookie-banner[hidden],
 .cookie-banner.cookie-banner--hidden {
   display: none !important;
+}
+
+.cookie-banner .primary-button {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .cookie-banner-text {
