@@ -280,6 +280,49 @@
               <a class="primary-button" href="tel:+49202308329">Anrufen</a>
             </div>
           </div>
+
+          <div class="reservation-form-wrapper">
+            <h3>Reservierung anfragen</h3>
+            <div id="reservation-form-container">
+              <!-- Ersetze DEINE_FORM_ID durch deine Form-ID von formspree.io -->
+              <form id="reservation-form" action="https://formspree.io/f/mvzqgjjp" method="POST">
+                <label for="res-name">Name</label>
+                <input type="text" id="res-name" name="name" required placeholder="Ihr Name" />
+                <label for="res-address">Adresse</label>
+                <input type="text" id="res-address" name="address" required placeholder="Straße, PLZ Ort" />
+                <label for="res-email">E-Mail</label>
+                <input type="email" id="res-email" name="email" required placeholder="ihre@email.de" />
+                <label for="res-phone">Telefon</label>
+                <input type="tel" id="res-phone" name="phone" required placeholder="z. B. 0202 123456" />
+                <label for="res-guests">Anzahl Gäste</label>
+                <select id="res-guests" name="guests" required>
+                  <option value="">Bitte wählen</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11–15</option>
+                  <option value="16">16–20</option>
+                  <option value="20+">Mehr als 20</option>
+                </select>
+                <label for="res-date">Datum</label>
+                <input type="date" id="res-date" name="date" required />
+                <label for="res-time">Uhrzeit</label>
+                <input type="time" id="res-time" name="time" required />
+                <p id="reservation-form-error" class="form-error" aria-live="polite" hidden></p>
+                <button type="submit" class="primary-button">Anfrage absenden</button>
+              </form>
+            </div>
+            <div id="reservation-success" class="form-success" hidden>
+              Ihre Anfrage für eine Reservierung wurde übermittelt.
+            </div>
+          </div>
         </div>
         <div class="map-wrapper">
           <div id="map-placeholder" class="map-placeholder">
@@ -823,6 +866,57 @@
           }, { rootMargin: '50px' });
 
           observer.observe(mapPlaceholder);
+        }
+
+        // Reservierungsformular: per fetch an Formspree senden, Bestätigung anzeigen
+        const reservationForm = document.getElementById('reservation-form');
+        const formContainer = document.getElementById('reservation-form-container');
+        const successMessage = document.getElementById('reservation-success');
+        const errorMessage = document.getElementById('reservation-form-error');
+
+        if (reservationForm && formContainer && successMessage) {
+          reservationForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorMessage.hidden = true;
+            errorMessage.textContent = '';
+            const submitBtn = reservationForm.querySelector('button[type="submit"]');
+            if (submitBtn) {
+              submitBtn.disabled = true;
+              submitBtn.textContent = 'Wird gesendet…';
+            }
+            const formData = new FormData(reservationForm);
+            const action = reservationForm.getAttribute('action');
+            if (!action || action.includes('DEINE_FORM_ID')) {
+              if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Anfrage absenden';
+              }
+              errorMessage.textContent = 'Bitte tragen Sie Ihre Formspree-Form-ID in der action-URL ein.';
+              errorMessage.hidden = false;
+              return;
+            }
+            try {
+              const response = await fetch(action, {
+                method: 'POST',
+                body: formData,
+                headers: { Accept: 'application/json' }
+              });
+              const data = await response.json().catch(() => ({}));
+              if (response.ok && (data.ok === true || response.status === 200)) {
+                formContainer.hidden = true;
+                successMessage.hidden = false;
+              } else {
+                throw new Error(data.error || 'Fehler beim Senden');
+              }
+            } catch (err) {
+              errorMessage.textContent = 'Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut.';
+              errorMessage.hidden = false;
+              if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Anfrage absenden';
+              }
+            }
+          });
         }
       });
     </script>
