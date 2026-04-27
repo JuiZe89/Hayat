@@ -12,20 +12,21 @@ Telefon: +49 202 308329
 
 ## Vertretungsberechtigte
 
-[Inhaber/Geschäftsführer Name]
+Yasin Yildiz & Aysel Yildiz
 
 ## Kontakt
 
-E-Mail: [E-Mail-Adresse]  
+E-Mail: Hayat2007@web.de  
 Telefon: +49 202 308329
 
 **Öffnungszeiten:**
 - Dienstag – Samstag: 18:00 – 00:00 Uhr
+- Küche bis 22:00 Uhr
 - Sonntag & Montag: Ruhetag
 
 ## Umsatzsteuer-ID
 
-VAT-ID: [Umsatzsteuer-Identifikationsnummer]
+Umsatzsteuer-Identifikationsnummer: [Umsatzsteuer-Identifikationsnummer]
 
 ## Registereintrag
 
@@ -39,17 +40,17 @@ Gewerbe angemeldet bei der Industrie- und Handelskammer Düsseldorf
 
 ## Verantwortlich für den Inhalt
 
-Gemäß § 7 Abs.1 TMG ist für den Inhalt dieser Website der Betreiber verantwortlich.
+Gemäß § 7 Abs. 1 TMG ist für den Inhalt dieser Website der Betreiber verantwortlich.
 
 ## Haftung für Inhalte
 
-Die Inhalte unserer Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. 
+Die Inhalte unserer Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
 
 Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich.
 
 ## Haftung für Links
 
-Unsere Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. 
+Unsere Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
 
 Falls wir Kenntnis von Rechtsverletzungen erhalten, werden wir derartige Links umgehend entfernen.
 
@@ -61,4 +62,4 @@ Bitte beachten Sie auch unsere [Datenschutzerklärung](Datenschutz.md).
 
 ---
 
-*Letzte Aktualisierung: 2025*
+*Letzte Aktualisierung: 2026*

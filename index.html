@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
@@ -6,9 +6,9 @@
     <meta name="theme-color" content="#d26a2c" />
     <meta
       name="description"
-      content="Hayat-Jiyan Restaurant in Wuppertal – authentische anatolische Küche, moderne Atmosphäre, warme Gastfreundschaft. Reservieren Sie jetzt Ihren Tisch."
+      content="Hayat-Jiyan Restaurant in Wuppertal – Handgemachte Meze, saftige Grillgerichte vom Lavasteingrill und süße Spezialitäten – mit Liebe zubereitet und in familiärer Atmosphäre serviert. Reservieren Sie jetzt Ihren Tisch."
     />
-    <title>Hayat-Jiyan Restaurant | Moderne anatolische Küche in Wuppertal</title>
+    <title>Hayat-Jiyan Restaurant | Authentischer Genuss. Seit 1982.</title>
     <link rel="preconnect" href="https://maps.google.com" crossorigin />
     <link rel="preconnect" href="https://www.google.com" crossorigin />
     <link rel="dns-prefetch" href="//maps.google.com" />
@@ -17,16 +17,16 @@
     <style>
       /* Critical CSS inlined to eliminate request chain */
       :root {
-        --bg: #fdf9f3;
-        --bg-muted: #f4ede3;
+        --bg: #fbf6ee;
+        --bg-muted: #efe5d7;
         --card: #ffffff;
         --accent: #d26a2c;
         --accent-strong: #b9571f;
         --text: #1f1f26;
         --text-secondary: #3d3d47;
         --muted: #6b6b76;
-        --border: rgba(31, 31, 38, 0.1);
-        --shadow-soft: 0 24px 48px rgba(31, 31, 38, 0.08);
+        --border: rgba(31, 31, 38, 0.12);
+        --shadow-soft: 0 24px 46px rgba(31, 31, 38, 0.1);
         --radius-lg: 22px;
         --radius-md: 16px;
         --radius-sm: 12px;
@@ -38,11 +38,15 @@
       *, *::before, *::after { box-sizing: border-box; }
       
       html { scroll-behavior: smooth; }
+
+      #menu, #highlights, #reviews, #gallery, #contact, #reservation {
+        scroll-margin-top: 124px;
+      }
       
       body {
         margin: 0;
         font-family: var(--font-sans);
-        background: linear-gradient(180deg, var(--bg) 0%, #fff 60%, var(--bg-muted) 100%);
+        background: linear-gradient(180deg, var(--bg) 0%, #f8f2e8 60%, var(--bg-muted) 100%);
         color: var(--text);
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
@@ -55,17 +59,72 @@
       .hero {
         position: relative;
         padding: 36px 0 96px;
-        background: radial-gradient(circle at top left, rgba(210, 106, 44, 0.15), transparent 55%),
-          radial-gradient(circle at bottom right, rgba(255, 212, 158, 0.4), transparent 50%), transparent;
+        background: radial-gradient(circle at top left, rgba(210, 106, 44, 0.17), transparent 55%),
+          radial-gradient(circle at bottom right, rgba(255, 212, 158, 0.44), transparent 50%), transparent;
       }
       
       .nav {
-        max-width: var(--max-width);
-        margin: 0 auto 72px;
+        width: 100%;
+        max-width: none;
+        margin: 0 0 72px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 24px;
+      }
+
+      .site-nav {
+        position: sticky;
+        top: 0;
+        z-index: 1200;
+        margin: 0;
+        padding: 14px clamp(18px, 3vw, 34px);
+        border-top: 0;
+        border-right: 0;
+        border-left: 0;
+        border-bottom: 1px solid rgba(31, 31, 38, 0.08);
+        border-radius: 0;
+        background: rgba(251, 246, 238, 0.94);
+        box-shadow: 0 10px 26px rgba(31, 31, 38, 0.08);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        transition:
+          background-color 0.28s ease,
+          box-shadow 0.28s ease,
+          backdrop-filter 0.28s ease,
+          -webkit-backdrop-filter 0.28s ease;
+      }
+
+      .site-nav.is-scrolled {
+        background: rgba(251, 246, 238, 0.72);
+        box-shadow: 0 8px 24px rgba(31, 31, 38, 0.06);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+      }
+
+      .site-nav .brand {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 0;
+        letter-spacing: 0;
+        text-transform: none;
+        flex: 0 0 clamp(92px, 10vw, 132px);
+      }
+
+      .site-nav-logo {
+        display: block;
+        width: auto;
+        height: clamp(38px, 4.4vw, 54px);
+        max-width: 100%;
+        aspect-ratio: 1600 / 1026;
+        object-fit: contain;
+      }
+
+      .site-nav::after {
+        content: "";
+        display: block;
+        flex: 0 0 clamp(92px, 10vw, 132px);
       }
       
       .brand {
@@ -79,32 +138,95 @@
       
       .nav-links {
         display: flex;
-        gap: 22px;
+        gap: 18px;
+        flex: 1;
+        justify-content: center;
         font-size: 0.95rem;
         color: var(--muted);
         font-weight: 500;
       }
       
       .nav-links a {
-        padding: 4px 0;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 2px 8px;
         border-bottom: 2px solid transparent;
-        transition: color 0.2s ease, border-color 0.2s ease;
+        transition: color 0.24s ease, border-color 0.24s ease, transform 0.24s ease;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -2px;
+        height: 3px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--accent), #cf4e2b);
+        opacity: 0;
+        transform: scaleX(0.45);
+        transform-origin: center;
+        transition: opacity 0.24s ease, transform 0.24s ease;
+      }
+
+      .nav-links a svg {
+        width: 0.95em;
+        height: 0.95em;
+        flex-shrink: 0;
+      }
+
+      .nav-link-reservation {
+        gap: 8px;
+      }
+
+      .nav-link-reservation svg {
+        width: 0.95em;
+        height: 0.95em;
+        flex-shrink: 0;
       }
       
       .nav-links a:hover, .nav-links a:focus-visible {
         color: var(--accent);
         border-color: rgba(210, 106, 44, 0.35);
+        transform: translateY(-1px);
+      }
+
+      .nav-links a:hover::after, .nav-links a:focus-visible::after,
+      .nav-links a.is-current::after {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+
+      .nav-links a.is-current {
+        color: #b84328;
+        transform: translateY(-1px);
       }
       
       .hero-content {
         max-width: var(--max-width);
         margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 28px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+        align-items: center;
+        gap: 48px;
       }
       
       .hero-text { max-width: 640px; }
+
+      .hero-visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-logo {
+        width: min(44vw, 420px);
+        max-width: 100%;
+        height: auto;
+        filter: drop-shadow(0 20px 40px rgba(31, 31, 38, 0.18));
+      }
       
       .eyebrow {
         letter-spacing: 0.24em;
@@ -122,6 +244,8 @@
         letter-spacing: -0.02em;
         color: var(--text);
         font-weight: 600;
+        font-variant-numeric: lining-nums;
+        font-feature-settings: "lnum" 1;
       }
       
       .lead {
@@ -173,49 +297,144 @@
         border-color: rgba(210, 106, 44, 0.35);
         color: var(--accent-strong);
       }
+
+      body.intro-sequence [data-intro] {
+        opacity: 0;
+        transform: translateY(22px) scale(0.994);
+        filter: blur(4px);
+        transition:
+          opacity 0.92s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.92s cubic-bezier(0.22, 1, 0.36, 1),
+          filter 1.28s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform, filter;
+      }
+
+      body.intro-sequence [data-intro].is-intro-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+
+      body.intro-sequence [data-intro="hero"] {
+        transition-duration: 1.02s;
+      }
+
+      body.intro-sequence [data-intro="nav"] {
+        transition-duration: 0.9s;
+      }
+
+      body.intro-sequence [data-intro="menu"] {
+        transition-duration: 1.08s;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        body.intro-sequence [data-intro] {
+          opacity: 1;
+          transform: none;
+          filter: none;
+          transition: none;
+        }
+      }
     </style>
     <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="styles.css" /></noscript>
   </head>
   <body>
+    <script>
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.body.classList.add("intro-sequence");
+      }
+    </script>
+    <nav class="nav site-nav" data-intro="nav">
+      <a class="brand" href="#top" aria-label="Hayat-Jiyan Startseite">
+        <img class="site-nav-logo" src="assets/logo-hayat.png" alt="Hayat-Jiyan Logo" width="1600" height="1026" loading="eager" decoding="async" />
+      </a>
+      <div class="nav-links">
+        <a href="#menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M6 3v8.2a2.8 2.8 0 0 0 2.8 2.8V21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M10.2 3v8.2a2.8 2.8 0 0 1-2.8 2.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M14.5 3v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            <path d="M18 3c1.7 1.4 2.5 3.4 2.5 5.7 0 2.4-.9 4.3-2.5 5.6V21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Speisekarte
+        </a>
+        <a href="#highlights">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 20.5 4.8 13.6a4.8 4.8 0 0 1 6.8-6.8L12 7.2l.4-.4a4.8 4.8 0 1 1 6.8 6.8L12 20.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Favoriten
+        </a>
+        <a href="#reviews">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="m12 3.8 2.3 4.7 5.2.8-3.8 3.7.9 5.2-4.6-2.4-4.6 2.4.9-5.2-3.8-3.7 5.2-.8L12 3.8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+          </svg>
+          Bewertungen
+        </a>
+        <a href="#gallery">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4.75 7.25h14.5A1.75 1.75 0 0 1 21 9v8.25A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25V9a1.75 1.75 0 0 1 1.75-1.75Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+            <path d="M8 7.25 9.2 5h5.6L16 7.25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="12" cy="13.2" r="3" fill="none" stroke="currentColor" stroke-width="1.8" />
+          </svg>
+          Bilder
+        </a>
+        <a href="#contact">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M6.7 4.8h2.1c.4 0 .8.3.9.7l.8 3.4c.1.4 0 .8-.3 1.1l-1.4 1.4a14 14 0 0 0 4.5 4.5l1.4-1.4c.3-.3.7-.4 1.1-.3l3.4.8c.4.1.7.5.7.9v2.1c0 .6-.4 1-.9 1.1-1 .2-2 .3-2.9.3C9.6 20.3 3.7 14.4 3.7 7.7c0-1 .1-2 .3-2.9.1-.5.5-.9 1.1-.9Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Kontakt
+        </a>
+        <a href="#reservation" class="nav-link-reservation">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M6.75 4.5h10.5A1.75 1.75 0 0 1 19 6.25v11.5A1.75 1.75 0 0 1 17.25 19H6.75A1.75 1.75 0 0 1 5 17.75V6.25A1.75 1.75 0 0 1 6.75 4.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+            <path d="M8.25 4.5V3m7.5 1.5V3M5 9.25h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Reservierung
+        </a>
+      </div>
+    </nav>
     <header class="hero" id="top">
-      <nav class="nav">
-        <a class="brand" href="#top">Hayat-Jiyan</a>
-        <div class="nav-links">
-          <a href="#highlights">Favoriten</a>
-          <a href="#menu">Speisekarte</a>
-          <a href="#contact">Kontakt</a>
-        </div>
-      </nav>
-      <div class="hero-content">
+      <div class="hero-content" data-intro="hero">
         <div class="hero-text">
-          <p class="eyebrow">Seit 1998 in Wuppertal</p>
-          <h1>Frische anatolische Küche</h1>
+          <p class="eyebrow">Seit 1982 in Wuppertal</p>
+          <h1>Authentischer Genuss. Seit 1982</h1>
           <p class="lead">
-            Handgemachte Meze, Grillgerichte vom Holzkohlengrill und süße Klassiker –
+            Handgemachte Meze, Grillgerichte vom Lavasteingrill und süße Klassiker –
             serviert in entspannter Atmosphäre.
           </p>
           <div class="hero-actions">
             <a class="primary-button" href="#menu">Zur Speisekarte</a>
-            <a class="ghost-button" href="https://maps.app.goo.gl/XF5LRkoz2VXKV5CT8"
+            <a class="ghost-button" href="https://www.google.com/maps/place/Hayat-Jiyan+Restaurant/@51.2605482,7.1380626,17z/data=!4m8!3m7!1s0x47b8d7ac00cb9a29:0xdf5761f218b776e9!8m2!3d51.2605482!4d7.1380626!9m1!1b1!16s%2Fg%2F1td9pmbs?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D"
               >Jetzt besuchen</a
             >
           </div>
+        </div>
+        <div class="hero-visual">
+          <img
+            class="hero-logo"
+            src="assets/logo-hayat.png"
+            alt="Hayat-Jiyan Logo"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
         </div>
       </div>
     </header>
 
     <main>
       <section class="menu" id="menu">
-        <div class="section-heading">
+        <div class="section-heading" data-intro="menu">
           <p class="eyebrow">Speisekarte</p>
           <h2>Speisekarte</h2>
           <p class="section-lead">
             Alle Gerichte werden täglich frisch und hausgemacht zubereitet. 
             Wechselnde Tagesgerichte nicht inkludiert.
           </p>
+          <p class="menu-note">Wir haben eine täglich wechselnde Tageskarte!<br />Rufen Sie uns einfach an.<br />Gerne informieren wir Sie telefonisch.</p>
         </div>
-        <div class="menu-layout">
+        <div class="menu-layout" data-intro="menu">
           <div
             class="menu-categories"
             role="tablist"
@@ -242,18 +461,204 @@
           <article class="highlight-card">
             <h3>HAYAT-Grillteller</h3>
             <p>Mix aus Köfte, Şiş und Gemüse – perfekt zum Teilen.</p>
-            <span class="price">17,50&nbsp;€</span>
+            <span class="price" data-price-number="69">17,90&nbsp;€</span>
           </article>
           <article class="highlight-card">
             <h3>Iskender Kebap</h3>
             <p>Geröstetes Brot, Joghurt, Tomate und zartes Lamm.</p>
-            <span class="price">12,80&nbsp;€</span>
+            <span class="price" data-price-number="91">12,90&nbsp;€</span>
           </article>
           <article class="highlight-card">
             <h3>Zucchinipuffer</h3>
-            <p>Leicht, knusprig und vegetarisch – hausgemachte Kräuterdip.</p>
-            <span class="price">11,50&nbsp;€</span>
+            <p>Leicht, knusprig und vegetarisch – mit einem hausgemachten Kräuterdip.</p>
+            <span class="price" data-price-number="36">11,50&nbsp;€</span>
           </article>
+        </div>
+      </section>
+
+      <section class="services" id="services">
+        <div class="section-heading">
+          <p class="eyebrow">Services</p>
+          <h2>Das bieten wir an</h2>
+          <p class="section-lead">
+            Vier Extras, die den Besuch bei uns noch entspannter und flexibler machen.
+          </p>
+        </div>
+        <div class="services-grid" aria-label="Unsere Services">
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" focusable="false">
+                <path d="M10 31h28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+                <path d="M16 31v4m16-4v4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+                <path d="M15 31v-9.5c0-2.5 2-4.5 4.5-4.5H33c2.2 0 4 1.8 4 4v10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+                <path d="M21 17V13.5c0-1.4 1.1-2.5 2.5-2.5h2c1.4 0 2.5 1.1 2.5 2.5V17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+                <path d="M11.5 23c2-5.2 6.3-8.5 12.5-10m12.5 10c-1.2-3.3-3.3-5.9-6.2-7.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <h3>Außengastronomie</h3>
+            <p>Unsere Außengastronomie bietet Platz für etwa 70 Personen. Reservierungen für Außenplätze können wir leider nicht annehmen, da die Plätze begrenzt sind. Deshalb empfehlen wir, frühzeitig zu kommen.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" focusable="false">
+                <path d="M16 19h16l2.5 15H13.5L16 19Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+                <path d="M20 19v-2.5c0-2.2 1.8-4 4-4s4 1.8 4 4V19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M19.5 24h9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+                <path d="M34 17.5 38 21m0 0-4 3.5M38 21H29.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3>Zum Mitnehmen</h3>
+            <p>Viele Gerichte bereiten wir Ihnen gern frisch für unterwegs vor.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" focusable="false">
+                <path d="M24 31a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" fill="currentColor" />
+                <path d="M16.5 26.5a10.5 10.5 0 0 1 15 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+                <path d="M11 21a18 18 0 0 1 26 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+                <path d="M6.5 15.5a24.5 24.5 0 0 1 35 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <h3>Kostenloses WLAN</h3>
+            <p>Vor Ort nutzen Sie unser WLAN kostenlos und unkompliziert.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" focusable="false">
+                <path d="M15 34h18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+                <path d="M18 34v-8.5a6 6 0 0 1 12 0V34" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+                <path d="M21 18h6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+                <path d="M24 14v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+                <path d="M13 21h22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+                <path d="M10.5 21 14 14h20l3.5 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3>Catering</h3>
+            <p>Für Feiern und besondere Anlässe bieten wir auch Catering an.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="reviews" id="reviews" hidden>
+        <div class="section-heading">
+          <p class="eyebrow">Bewertungen</p>
+          <h2 class="reviews-title">Das sagen unsere Gäste</h2>
+          <p class="section-lead" id="reviews-meta"></p>
+        </div>
+        <div class="reviews-grid" id="reviews-grid"></div>
+        <div class="reviews-cta">
+          <a
+            id="reviews-google-link"
+            class="ghost-button reviews-google-link"
+            href="https://www.google.com/maps/place/Hayat-Jiyan+Restaurant/@51.2605482,7.1380626,17z/data=!4m8!3m7!1s0x47b8d7ac00cb9a29:0xdf5761f218b776e9!8m2!3d51.2605482!4d7.1380626!9m1!1b1!16s%2Fg%2F1td9pmbs?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener"
+          >
+            Alle Bewertungen auf Google Maps
+          </a>
+        </div>
+      </section>
+
+      <section class="gallery" id="gallery">
+        <div class="section-heading">
+          <p class="eyebrow">Bilder</p>
+          <h2>Einblicke in unsere Location</h2>
+          <p class="section-lead">
+            Eindrücke aus unserem Gastraum und der besonderen Atmosphäre vor Ort. Unser vorderer und hinterer Bereich bieten zusammen Platz für etwa 80 Personen.
+          </p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-card">
+            <button class="gallery-trigger" type="button" aria-label="Bild vergrößern: Blick durch den Gastraum mit gedeckten Holztischen">
+              <img
+                src="assets/Foto_Gastraum_Ansicht.jpg"
+                alt="Blick durch den Gastraum mit gedeckten Holztischen"
+                width="8160"
+                height="6120"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+            <figcaption>Blick durch den Gastraum mit warmem Licht und viel Platz zum entspannten Sitzen.</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <button class="gallery-trigger" type="button" aria-label="Bild vergrößern: Gastraum mit Sitzbereich und Blick Richtung Eingang">
+              <img
+                src="assets/Foto_Gastraum_Hinten.jpg"
+                alt="Gastraum mit Sitzbereich und Blick Richtung Eingang"
+                width="7296"
+                height="5468"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+            <figcaption>Der hintere Bereich des Lokals mit Blick Richtung Eingang und Sitzbereich.</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <button class="gallery-trigger" type="button" aria-label="Bild vergrößern: Seitenansicht des Gastraums mit Wanddekoration und Tischen">
+              <img
+                src="assets/Foto_Gastraum_Mitte-Hinten.jpg"
+                alt="Seitenansicht des Gastraums mit Wanddekoration und Tischen"
+                width="8160"
+                height="6120"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+            <figcaption>Seitenansicht des Gastraums mit Wanddetails, stimmungsvoller Beleuchtung und Sitzplätzen.</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <button class="gallery-trigger" type="button" aria-label="Bild vergrößern: Außengastronomie am Abend vor dem Restaurant">
+              <img
+                src="assets/Außengastronomie_Dunkel.jpg"
+                alt="Außengastronomie am Abend vor dem Restaurant"
+                width="2992"
+                height="2992"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+            <figcaption>Abendstimmung vor dem Hayat-Jiyan mit beleuchteter Außengastronomie.</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <button class="gallery-trigger" type="button" aria-label="Bild vergrößern: Außenansicht des Restaurants bei Nacht">
+              <img
+                src="assets/Bild_Außen_1.jpg"
+                alt="Außenansicht des Restaurants bei Nacht"
+                width="2160"
+                height="3840"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+            <figcaption>Außenansicht des Restaurants bei Nacht mit Blick auf die beleuchteten Fenster.</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <button class="gallery-trigger" type="button" aria-label="Bild vergrößern: Catering-Auswahl mit verschiedenen hausgemachten Dips und Vorspeisen">
+              <img
+                src="assets/Catering_Beispiel_Versch_Dips.jpg"
+                alt="Catering-Auswahl mit verschiedenen hausgemachten Dips und Vorspeisen"
+                width="8160"
+                height="6120"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+            <figcaption>Beispiel aus unserem Catering mit verschiedenen Dips, Weinblättern und Vorspeisen.</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <button class="gallery-trigger" type="button" aria-label="Bild vergrößern: Detailaufnahme der Wandgestaltung im Restaurant">
+              <img
+                src="assets/Muster_Wand.jpg"
+                alt="Detailaufnahme der Wandgestaltung im Restaurant"
+                width="2992"
+                height="2992"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+            <figcaption>Ein kleines Detail aus der warmen Wandgestaltung im Innenraum.</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -266,7 +671,7 @@
             <div>
               <h3>Adresse</h3>
               <p>Schreinerstraße 28<br />42105 Wuppertal</p>
-              <a class="ghost-button" href="https://maps.app.goo.gl/XF5LRkoz2VXKV5CT8">
+              <a class="ghost-button" href="https://www.google.com/maps/place/Hayat-Jiyan+Restaurant/@51.2605482,7.1380626,17z/data=!4m8!3m7!1s0x47b8d7ac00cb9a29:0xdf5761f218b776e9!8m2!3d51.2605482!4d7.1380626!9m1!1b1!16s%2Fg%2F1td9pmbs?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D">
                 Auf Google Maps öffnen
               </a>
             </div>
@@ -274,26 +679,32 @@
               <h3>Kontakt</h3>
               <p>
                 Telefon: <a href="tel:+49202308329">+49 202 308329</a><br />
+                E-Mail: <a href="mailto:Hayat2007@web.de">Hayat2007@web.de</a><br />
                 Di–Sa: 18:00 – 00:00 Uhr<br />
+                Küche bis 22:00 Uhr<br />
                 Sonntag &amp; Montag: Ruhetag
               </p>
               <a class="primary-button" href="tel:+49202308329">Anrufen</a>
             </div>
           </div>
 
-          <div class="reservation-form-wrapper">
+          <div class="reservation-form-wrapper" id="reservation">
             <h3>Reservierung anfragen</h3>
             <div id="reservation-form-container">
-              <!-- Ersetze DEINE_FORM_ID durch deine Form-ID von formspree.io -->
+              <!-- Formspree versendet an die im Formspree-Konto hinterlegte Zieladresse.
+                   Zieladresse dort auf Hayat2007@web.de setzen bzw. bestaetigen. -->
               <form id="reservation-form" action="https://formspree.io/f/mvzqgjjp" method="POST">
+                <input type="hidden" name="_subject" value="Neue Reservierungsanfrage (Website Hayat-Jiyan)" />
+                <input type="hidden" name="_language" value="de" />
+                <input type="hidden" name="_cc" value="Hayat2007@web.de" />
                 <label for="res-name">Name</label>
                 <input type="text" id="res-name" name="name" required placeholder="Ihr Name" />
                 <label for="res-address">Adresse</label>
                 <input type="text" id="res-address" name="address" required placeholder="Straße, PLZ Ort" />
                 <label for="res-email">E-Mail</label>
-                <input type="email" id="res-email" name="email" required placeholder="ihre@email.de" />
+                <input type="email" id="res-email" name="email" required placeholder="ihre@email.de" autocomplete="email" />
                 <label for="res-phone">Telefon</label>
-                <input type="tel" id="res-phone" name="phone" required placeholder="z. B. 0202 123456" />
+                <input type="tel" id="res-phone" name="phone" required placeholder="z. B. 0202 123456" autocomplete="tel" />
                 <label for="res-guests">Anzahl Gäste</label>
                 <select id="res-guests" name="guests" required>
                   <option value="">Bitte wählen</option>
@@ -325,346 +736,465 @@
           </div>
         </div>
         <div class="map-wrapper">
-          <div id="map-placeholder" class="map-placeholder">
-            <div class="map-placeholder-content">
-              <h3>Karte laden</h3>
-              <p>Klicken Sie hier, um die interaktive Karte zu laden</p>
-              <button id="load-map-btn" class="primary-button">Karte anzeigen</button>
+          <div class="map-frame">
+            <div id="map-placeholder" class="map-placeholder">
+              <div class="map-placeholder-content">
+                <h3>Karte laden</h3>
+                <p>Klicken Sie hier, um die interaktive Karte zu laden</p>
+                <button id="load-map-btn" class="primary-button">Karte anzeigen</button>
+                <a
+                  class="ghost-button reviews-button"
+                  href="https://www.google.com/maps/place/Hayat-Jiyan+Restaurant/@51.2605482,7.1380626,17z/data=!4m8!3m7!1s0x47b8d7ac00cb9a29:0xdf5761f218b776e9!8m2!3d51.2605482!4d7.1380626!9m1!1b1!16s%2Fg%2F1td9pmbs?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Google Bewertungen ansehen
+                </a>
+              </div>
             </div>
+            <iframe
+              id="google-map"
+              title="Hayat Restaurant auf Google Maps"
+              data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2496.7480480359186!2d7.13548767664248!3d51.2605481717583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8d7ac00cb9a29%3A0xdf5761f218b776e9!2sHayat-Jiyan%20Restaurant!5e0!3m2!1sen!2sgr!4v1761301299413!5m2!1sen!2sgr"
+              width="600"
+              height="450"
+              style="border: 0; display: none;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              fetchpriority="low"
+            ></iframe>
           </div>
-          <iframe
-            id="google-map"
-            title="Hayat Restaurant auf Google Maps"
-            data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2496.7480480359186!2d7.13548767664248!3d51.2605481717583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8d7ac00cb9a29%3A0xdf5761f218b776e9!2sHayat-Jiyan%20Restaurant!5e0!3m2!1sen!2sgr!4v1761301299413!5m2!1sen!2sgr"
-            width="600"
-            height="450"
-            style="border: 0; display: none;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            fetchpriority="low"
-          ></iframe>
         </div>
       </section>
+
     </main>
 
     <footer class="footer">
-      <p>&copy; <span id="current-year"></span> Hayat-Jiyan Restaurant. Alle Rechte vorbehalten.</p>
-      <div class="footer-links">
-        <a href="#menu">Speisekarte</a>
-        <a href="#contact">Kontakt</a>
-        <a href="Impressum.html">Impressum</a>
-        <a href="Datenschutz.html">Datenschutz</a>
-        <a href="#top">Nach oben</a>
+      <div class="footer-inner">
+        <div class="footer-row footer-row-main">
+          <a href="#menu">Speisekarte</a>
+          <a href="#highlights">Favoriten</a>
+          <a href="#reviews">Bewertungen</a>
+          <a href="#gallery">Bilder</a>
+          <a href="#contact">Kontakt</a>
+          <a href="#reservation">Reservierung</a>
+        </div>
+        <div class="footer-divider" aria-hidden="true"></div>
+        <div class="footer-row footer-row-legal">
+          <a href="Impressum.html">Impressum</a>
+          <a href="Datenschutz.html">Datenschutz</a>
+          <a href="#top">Nach oben</a>
+        </div>
+        <p class="footer-copy"><span id="current-year"></span> © Hayat-Jiyan Restaurant. Alle Rechte vorbehalten.</p>
+        <div class="footer-social">
+          <a class="footer-social-link" href="https://www.instagram.com/hayatjiyanmehmetyildiz/" target="_blank" rel="noopener" aria-label="Instagram öffnen">
+            <svg viewBox="0 0 24 24" width="18" height="18" focusable="false">
+              <path d="M16.5 3h-9A4.5 4.5 0 0 0 3 7.5v9A4.5 4.5 0 0 0 7.5 21h9a4.5 4.5 0 0 0 4.5-4.5v-9A4.5 4.5 0 0 0 16.5 3Z" fill="none" stroke="currentColor" stroke-width="1.8" />
+              <circle cx="12" cy="12" r="3.4" fill="none" stroke="currentColor" stroke-width="1.8" />
+              <circle cx="17.3" cy="6.7" r="0.9" fill="currentColor" />
+            </svg>
+          </a>
+          <a class="footer-social-link" href="https://www.facebook.com/Hayat.Oelberg" target="_blank" rel="noopener" aria-label="Facebook öffnen">
+            <svg viewBox="0 0 24 24" width="18" height="18" focusable="false">
+              <path d="M13.2 21v-7h2.3l.3-2.7h-2.6V9.6c0-.8.2-1.3 1.3-1.3H16V5.9c-.3 0-1.1-.1-2.1-.1-2.1 0-3.6 1.3-3.6 3.7v1.8H8V14h2.3v7h2.9Z" fill="currentColor" />
+            </svg>
+          </a>
+        </div>
       </div>
     </footer>
 
+    <!-- Menue-Texte zentral in menu-data.js pflegen -->
+    <script src="menu-data.js"></script>
+    <!-- Bewertungen zentral in reviews-data.js pflegen -->
+    <script src="reviews-data.js"></script>
+    <!-- Preise zentral in prices.js pflegen -->
+    <script src="prices.js"></script>
     <script defer>
-      const menuData = [
-        {
-          id: "kalte-vorspeisen",
-          title: "Kalte Vorspeisen",
-          sections: [
-            {
-              items: [
-                { name: "1 Portion Oliven", price: "5,00 €" },
-                { name: "2 Portion Peperoni", price: "5,00 €" },
-                { name: "3 Cacık (Knoblauch, Gurken, Joghurt)", price: "5,40 €" },
-                { name: "4 Spinat Ezme", price: "5,00 €" },
-                { name: "5 Sigara Böreği", price: "8,50 €" },
-                { name: "6 Havuç Ezme", price: "5,00 €" },
-                { name: "7 Muhammara", price: "5,80 €" },
-                { name: "8 Haydari Ezme", price: "5,00 €" },
-                { name: "9 Gefüllte Weinblätter", price: "7,50 €" },
-                { name: "10 Türkischer Teller", price: "9,00 €" },
-                { name: "11 Kalte Platte", price: "10,00 €" },
-                { name: "12 Auberginen Ezme", price: "5,80 €" },
-                { name: "13 Gebratenes Gemüse", price: "8,50 €" },
-                { name: "14 Antep-Ezme", price: "5,00 €" },
-                { name: "15 Humuz", price: "5,80 €" },
-                { name: "16 HAYAT-Vorspeisenteller", price: "11,80 €" }
-              ]
-            }
-          ]
-        },
-        {
-          id: "warme-vorspeisen",
-          title: "Warme Vorspeisen",
-          sections: [
-            {
-              items: [
-                { name: "30 Überbackene Champignons", price: "8,90 €" },
-                { name: "33 Überbackener Hirtenkäse", price: "8,90 €" },
-                { name: "83 Linsensuppe", price: "6,00 €" }
-              ],
-              note: "Extra-Portion Brot: 1,50 €"
-            }
-          ]
-        },
-        {
-          id: "salate",
-          title: "Salate",
-          sections: [
-            {
-              items: [
-                { name: "20 Hirse-Cacık-Salat", price: "9,50 €" },
-                { name: "21 HAYAT-Salat (mit Thunfisch)", price: "9,50 €" },
-                { name: "22 Hirtensalat", price: "9,50 €" },
-                { name: "24 Gemischter Salat mit Hirtenkäse", price: "9,50 €" },
-                { name: "28 Hindili Salat (mit Putenfleisch)", price: "10,50 €" },
-                { name: "29 Tomaten-Joghurt-Salat", price: "8,50 €" }
-              ]
-            }
-          ]
-        },
-        {
-          id: "doenergerichte",
-          title: "Dönergerichte",
-          sections: [
-            {
-              items: [
-                { name: "91 Iskender Kebap", price: "12,80 €" },
-                { name: "92 Döner mit Reis und Joghurt", price: "12,80 €" },
-                { name: "93 Fleischteller (Döner, Lamms pieß, Köfte)", price: "16,00 €" }
-              ]
-            }
-          ]
-        },
-        {
-          id: "pfanne",
-          title: "Aus der Pfanne",
-          sections: [
-            {
-              items: [
-                { name: "36 Zucchinipuffer", price: "11,50 €" },
-                { name: "37 Humuz-Spinat-Köfte (veg.)", price: "11,50 €" },
-                { name: "38 Teigtaschen mit Gemüse", price: "11,50 €" },
-                { name: "43 Falafel mit Sauce und Salat", price: "11,50 €" },
-                { name: "44 Putencurry", price: "13,50 €" },
-                { name: "46 Tirit mit Salat", price: "13,80 €" },
-                { name: "47 Arnavut Cigeri (gebratene Leber)", price: "12,50 €" },
-                { name: "48 Gemüsepfanne", price: "10,00 €" },
-                { name: "49 Gemüsepfanne mit Putenfleisch", price: "13,50 €" },
-                { name: "78 Pfannkuchen mit Hackfleischfüllung", price: "11,50 €" }
-              ]
-            }
-          ]
-        },
-        {
-          id: "ofen",
-          title: "Aus dem Ofen",
-          sections: [
-            {
-              items: [
-                { name: "50 Spinatauflauf mit Kartoffeln &amp; Käse", price: "10,50 €" },
-                { name: "51 Spinatauflauf mit Bulgur &amp; Hirtenkäse", price: "10,50 €" },
-                { name: "52 Brokkoliauflauf", price: "10,50 €" },
-                { name: "53 Auberginenauflauf", price: "10,50 €" },
-                { name: "55 Nudelauflauf", price: "10,50 €" },
-                { name: "56 Gemüseauflauf", price: "10,50 €" }
-              ],
-              note: "Alle Aufläufe wahlweise mit oder ohne Fleisch – mit Fleisch + 2,50 €"
-            }
-          ]
-        },
-        {
-          id: "grill",
-          title: "Vom Grill",
-          sections: [
-            {
-              items: [
-                { name: "57 Türkische Wurst mit Paprika &amp; Salat", price: "12,00 €" },
-                { name: "59 Şiş mit Lammfleisch", price: "14,00 €" },
-                { name: "60 Hähnchenspieß", price: "13,50 €" },
-                { name: "62 Köfte", price: "13,50 €" },
-                { name: "63 Köfte mit Hirtenkäsefüllung", price: "15,00 €" },
-                { name: "64 Adana Şiş", price: "13,00 €" },
-                { name: "65 Adana Şiş mit Joghurtsauce", price: "14,00 €" },
-                { name: "66 Tomaten-Kebab", price: "14,50 €" },
-                { name: "67 Pirzola (Lammkoteletts)", price: "17,00 €" },
-                { name: "68 Fleischplatte", price: "16,50 €" },
-                { name: "69 HAYAT-Grillteller", price: "17,50 €" }
-              ]
-            }
-          ]
-        },
-        {
-          id: "beilagen",
-          title: "Beilagen",
-          sections: [
-            {
-              items: [
-                { name: "74 Reis", price: "2,50 €" },
-                { name: "75 Bulgur", price: "2,50 €" },
-                { name: "76 Beilagensalat", price: "3,50 €" }
-              ]
-            }
-          ]
-        },
-        {
-          id: "kinder",
-          title: "Für Kinder",
-          sections: [
-            {
-              items: [
-                { name: "84 Falafel mit Sauce und Salat", price: "7,50 €" },
-                { name: "85 Spieß mit Salat und Reis", price: "8,50 €" },
-                { name: "86 Köfte mit Salat und Reis", price: "8,50 €" }
-              ]
-            }
-          ]
-        },
-        {
-          id: "dessert",
-          title: "Dessert",
-          sections: [
-            {
-              items: [{ name: "87 Baklava (3 Stück, mit Sahne, Zimt und Walnuss)", price: "4,20 €" }]
-            }
-          ]
-        },
-        {
-          id: "biere",
-          title: "Biere",
-          sections: [
-            {
-              items: [
-                { name: "Früh Kölsch", price: "3,00 € / 5,00 €" },
-                { name: "Schlösser Alt", price: "3,00 € / 5,00 €" },
-                { name: "Jever Pils", price: "3,00 € / 5,00 €" },
-                { name: "Brinkhoffs Nr. 1", price: "3,00 € / 5,00 €" },
-                { name: "Jever Fun (alkoholfrei)", price: "3,00 € / 5,00 €" },
-                { name: "Malz", price: "3,00 € / 5,00 €" },
-                { name: "Hefeweizen", price: "5,00 €" },
-                { name: "Weizen, alkoholfrei", price: "5,00 €" }
-              ]
-            }
-          ]
-        },
-        {
-          id: "softdrinks",
-          title: "Alkoholfreie Getränke",
-          sections: [
-            {
-              items: [
-                { name: "Fanta / Cola / Sprite", price: "3,00 € / 4,50 €" },
-                { name: "Selters Mineralwasser (0,25l / 0,75l)", price: "2,80 € / 5,00 €" },
-                { name: "Tonic, Bitter Lemon", price: "3,50 €" },
-                { name: "Säfte / Saftschorle", price: "3,50 € / 5,00 €" },
-                { name: "Bionade (0,33l)", price: "4,00 €" },
-                { name: "Fassbrause (0,33l)", price: "4,00 €" }
-              ]
-            }
-          ]
-        },
-        {
-          id: "warme-getraenke",
-          title: "Warme Getränke",
-          sections: [
-            {
-              items: [
-                { name: "Kaffee", price: "2,80 €" },
-                { name: "Espresso", price: "2,00 €" },
-                { name: "Doppelter Espresso", price: "3,50 €" },
-                { name: "Milchkaffee", price: "3,20 €" },
-                { name: "Cappuccino", price: "3,20 €" },
-                { name: "Türkischer Tee (klein)", price: "1,50 €" },
-                { name: "Frische Minze", price: "3,00 €" },
-                { name: "Tee, verschiedene Sorten", price: "2,50 €" },
-                { name: "Heiße Zitrone", price: "3,00 €" }
-              ]
-            }
-          ]
-        },
-        {
-          id: "spirituosen",
-          title: "Spirituosen",
-          sections: [
-            {
-              items: [
-                { name: "Ouzo", price: "3,00 €" },
-                { name: "Rum", price: "3,00 €" },
-                { name: "103", price: "3,00 €" },
-                { name: "Veterano", price: "3,00 €" },
-                { name: "Grappa", price: "3,00 €" },
-                { name: "Wodka", price: "3,00 €" },
-                { name: "Baileys", price: "3,00 €" },
-                { name: "Averna", price: "3,00 €" },
-                { name: "Sambuca", price: "3,00 €" },
-                { name: "Café Oriental", price: "3,00 €" },
-                { name: "Fernet Branca", price: "3,00 €" },
-                { name: "Ramazotti", price: "3,00 €" },
-                { name: "Jägermeister", price: "3,00 €" }
-              ],
-              note: "Alle Spirituosen: 3,00 €"
-            }
-          ]
-        },
-        {
-          id: "weinkarte",
-          title: "Weinkarte",
-          sections: [
-            {
-              title: "Weißwein (0,2l)",
-              items: [
-                {
-                  name: "Grauburgunder",
-                  price: "4,60 €",
-                  description: "Volle Frucht und ausgeprägter Geschmack."
-                },
-                {
-                  name: "Riesling (enthält Sulfite)",
-                  price: "4,60 €",
-                  description: "Ein edler Freund aus dem Rheingau."
-                }
-              ]
-            },
-            {
-              title: "Rotwein (0,2l)",
-              items: [
-                { name: "Montepulciano d'Abruzzo", price: "4,60 €" },
-                {
-                  name: "Merlot (enthält Sulfite)",
-                  price: "4,60 €",
-                  description: "Rebsorte Merlot – hat die Frucht, die ihm nachgesagt wird. Passt immer!"
-                }
-              ]
-            },
-            {
-              title: "Weinschorle",
-              items: [{ name: "Weißweinschorle (enthält Sulfite)", price: "4,00 €" }]
-            }
-          ]
-        }
-      ];
+      const menuData = Array.isArray(window.MENU_DATA) ? window.MENU_DATA : [];
+      const priceCatalog = window.PRICE_CATALOG || { numbered: {}, named: {} };
 
-      // Deutsche Beschreibungen für Gerichte ohne deutsche Bezeichnung. :)
-      const translationMap = {
-        3: "Joghurt-Gurken-Dip mit Knoblauch",
-        4: "Würziger Spinataufstrich mit Joghurt",
-        5: "Knusprige Yufka-Röllchen mit Käse",
-        6: "Karotten-Walnuss-Aufstrich mit Gewürzen",
-        7: "Paprika-Walnuss-Creme mit Granatapfelsirup",
-        8: "Cremiger Joghurt-Dip mit Kräutern und Knoblauch",
-        12: "Geräucherte Auberginencreme mit Joghurt",
-        14: "Scharfer Tomaten-Paprika-Salat",
-        15: "Kichererbsenpüree mit Tahin",
-        37: "Kichererbsen-Spinat-Bällchen mit Kräutern",
-        46: "Geröstetes Fladenbrot in Brühe mit Joghurt-Butter",
-        47: "Gebratene Leberwürfel nach Balkan-Art",
-        59: "Lammspieß vom Grill",
-        60: "Hähnchenspieß vom Grill",
-        62: "Gegrillte Hackfleischbällchen",
-        63: "Hackbällchen mit Feta-Füllung",
-        64: "Scharfer Hackfleischspieß aus Adana",
-        65: "Scharfer Hackfleischspieß mit Joghurtsauce",
-        66: "Spieße in fruchtiger Tomatensauce",
-        85: "Zarter Fleischspieß mit Salat und Reis",
-        86: "Hackfleischbällchen mit Salat und Reis",
-        91: "Dönerfleisch auf Fladenbrot mit Tomatensauce und Joghurt"
+      const normalizePriceName = (value) =>
+        String(value || "")
+          .toLowerCase()
+          .trim()
+          .replace(/\s+/g, " ");
+
+      const getCatalogPrice = (itemName) => {
+        const name = String(itemName || "");
+        const numberMatch = name.match(/^(\d+)\b/);
+        if (numberMatch) {
+          return priceCatalog.numbered[numberMatch[1]] || "";
+        }
+        return priceCatalog.named[normalizePriceName(name)] || "";
       };
 
+      const applyCatalogPricesToMenu = () => {
+        menuData.forEach((category) => {
+          (category.sections || []).forEach((section) => {
+            (section.items || []).forEach((item) => {
+              const mappedPrice = getCatalogPrice(item.name);
+              if (mappedPrice) {
+                item.price = mappedPrice;
+              }
+            });
+          });
+        });
+      };
+
+      const applyCatalogPricesToHighlights = () => {
+        const standalonePriceNodes = document.querySelectorAll("[data-price-number], [data-price-name]");
+        standalonePriceNodes.forEach((node) => {
+          const numberKey = node.getAttribute("data-price-number");
+          const nameKey = node.getAttribute("data-price-name");
+          let mappedPrice = "";
+
+          if (numberKey) {
+            mappedPrice = priceCatalog.numbered[numberKey] || "";
+          } else if (nameKey) {
+            mappedPrice = priceCatalog.named[normalizePriceName(nameKey)] || "";
+          }
+
+          if (mappedPrice) {
+            node.textContent = mappedPrice;
+          }
+        });
+      };
+
+      const renderManualReviews = () => {
+        const reviewsSection = document.getElementById("reviews");
+        const reviewsGrid = document.getElementById("reviews-grid");
+        const reviewsMeta = document.getElementById("reviews-meta");
+        const reviewsGoogleLink = document.getElementById("reviews-google-link");
+
+        if (!reviewsSection || !reviewsGrid) {
+          return;
+        }
+
+        const data = window.SITE_REVIEWS || {};
+        const items = Array.isArray(data.items)
+          ? data.items.filter((item) => item && String(item.text || "").trim())
+          : [];
+
+        if (reviewsGoogleLink && typeof data.googleMapsUrl === "string" && data.googleMapsUrl.trim()) {
+          reviewsGoogleLink.href = data.googleMapsUrl.trim();
+        }
+
+        if (!items.length) {
+          reviewsSection.hidden = true;
+          return;
+        }
+
+        const averageRating = String(data.averageRating || "").trim();
+        const totalRatings = String(data.totalRatings || "").trim();
+        if (reviewsMeta) {
+          if (averageRating && totalRatings) {
+            reviewsMeta.textContent = `${averageRating} Sterne bei ${totalRatings} Google-Bewertungen.`;
+          } else if (averageRating) {
+            reviewsMeta.textContent = `${averageRating} Sterne auf Google.`;
+          } else {
+            reviewsMeta.textContent = "Ausgewählte Stimmen von unseren Gästen auf Google.";
+          }
+        }
+
+        reviewsGrid.textContent = "";
+        const fragment = document.createDocumentFragment();
+        items.slice(0, 3).forEach((item) => {
+          const ratingValue = Math.max(0, Math.min(5, Number(item.rating) || 0));
+          const filledStars = Math.round(ratingValue);
+          const stars = "★".repeat(filledStars) + "☆".repeat(5 - filledStars);
+          const author = String(item.author || "Gast").trim();
+          const date = String(item.date || "").trim();
+
+          const card = document.createElement("article");
+          card.className = "review-card";
+
+          const starsEl = document.createElement("p");
+          starsEl.className = "review-stars";
+          starsEl.setAttribute("aria-label", `${ratingValue.toFixed(1)} von 5 Sternen`);
+          starsEl.textContent = stars;
+          card.appendChild(starsEl);
+
+          const textWrap = document.createElement("div");
+          textWrap.className = "review-text-wrap";
+
+          const textEl = document.createElement("p");
+          textEl.className = "review-text";
+          textEl.textContent = `“${String(item.text).trim()}”`;
+          textWrap.appendChild(textEl);
+          card.appendChild(textWrap);
+
+          const toggleEl = document.createElement("button");
+          toggleEl.type = "button";
+          toggleEl.className = "review-toggle";
+          toggleEl.textContent = "Mehr ansehen";
+          toggleEl.hidden = true;
+          toggleEl.setAttribute("aria-expanded", "false");
+          card.appendChild(toggleEl);
+
+          const metaEl = document.createElement("p");
+          metaEl.className = "review-meta";
+          metaEl.textContent = date ? `${author} • ${date}` : author;
+          card.appendChild(metaEl);
+
+          fragment.appendChild(card);
+        });
+
+        reviewsGrid.appendChild(fragment);
+
+        const updateReviewExpandState = () => {
+          reviewsGrid.querySelectorAll(".review-card").forEach((card) => {
+            const textWrap = card.querySelector(".review-text-wrap");
+            const toggleEl = card.querySelector(".review-toggle");
+
+            if (!textWrap || !toggleEl) {
+              return;
+            }
+
+            const wasExpanded = card.classList.contains("is-expanded");
+            if (wasExpanded) {
+              card.classList.remove("is-expanded");
+            }
+
+            const needsToggle = textWrap.scrollHeight > textWrap.clientHeight + 2;
+            toggleEl.hidden = !needsToggle;
+            card.classList.toggle("has-overflow", needsToggle);
+
+            if (needsToggle && wasExpanded) {
+              card.classList.add("is-expanded");
+              toggleEl.textContent = "Weniger anzeigen";
+              toggleEl.setAttribute("aria-expanded", "true");
+            } else {
+              toggleEl.textContent = "Mehr ansehen";
+              toggleEl.setAttribute("aria-expanded", "false");
+            }
+          });
+        };
+
+        reviewsGrid.querySelectorAll(".review-toggle").forEach((button) => {
+          button.addEventListener("click", () => {
+            const card = button.closest(".review-card");
+            if (!card) {
+              return;
+            }
+
+            const expanded = card.classList.toggle("is-expanded");
+            button.textContent = expanded ? "Weniger anzeigen" : "Mehr ansehen";
+            button.setAttribute("aria-expanded", String(expanded));
+          });
+        });
+
+        reviewsSection.hidden = false;
+        updateReviewExpandState();
+
+        if (window.__reviewsResizeHandler) {
+          window.removeEventListener("resize", window.__reviewsResizeHandler);
+        }
+
+        let resizeTimer = 0;
+        window.__reviewsResizeHandler = () => {
+          window.clearTimeout(resizeTimer);
+          resizeTimer = window.setTimeout(updateReviewExpandState, 120);
+        };
+        window.addEventListener("resize", window.__reviewsResizeHandler, { passive: true });
+
+      };
+
+      const initQuickScrollReveal = () => {
+        if (!document.body || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          return;
+        }
+
+        const revealSelectors = [
+          ".hero-text",
+          ".hero-visual",
+          "#menu .section-heading",
+          "#menu .menu-layout",
+          "#highlights .section-heading",
+          "#highlights .highlight-card",
+          "#services .section-heading",
+          "#services .service-card",
+          "#reviews .section-heading",
+          "#reviews .review-card",
+          "#reviews .reviews-cta",
+          "#gallery .section-heading",
+          "#gallery .gallery-card",
+          "#contact .visit-info",
+          "#contact .map-wrapper",
+          ".footer"
+        ];
+
+        const nodeSet = new Set();
+        revealSelectors.forEach((selector) => {
+          document.querySelectorAll(selector).forEach((node) => nodeSet.add(node));
+        });
+
+        const revealNodes = Array.from(nodeSet);
+        if (!revealNodes.length) {
+          return;
+        }
+
+        document.body.classList.add("motion-reveal-enabled");
+
+        revealNodes.forEach((node) => {
+          node.setAttribute("data-reveal", "");
+        });
+
+        if (!("IntersectionObserver" in window)) {
+          revealNodes.forEach((node) => node.classList.add("is-visible"));
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.08, rootMargin: "0px 0px -8% 0px" }
+        );
+
+        revealNodes.forEach((node) => observer.observe(node));
+
+        // Show above-the-fold elements immediately.
+        requestAnimationFrame(() => {
+          const fold = window.innerHeight * 0.9;
+          revealNodes.forEach((node) => {
+            if (node.getBoundingClientRect().top <= fold) {
+              node.classList.add("is-visible");
+              observer.unobserve(node);
+            }
+          });
+        });
+      };
+
+      const initGalleryLightbox = () => {
+        const lightbox = document.getElementById("gallery-lightbox");
+        const lightboxImage = document.getElementById("gallery-lightbox-image");
+        const lightboxCaption = document.getElementById("gallery-lightbox-caption");
+        const lightboxClose = document.getElementById("gallery-lightbox-close");
+        const triggers = Array.from(document.querySelectorAll(".gallery-trigger"));
+
+        if (!lightbox || !lightboxImage || !lightboxCaption || !lightboxClose || !triggers.length) {
+          return;
+        }
+
+        let previousOverflow = "";
+        let activeTrigger = null;
+
+        const closeLightbox = () => {
+          lightbox.hidden = true;
+          document.body.classList.remove("has-open-lightbox");
+          document.body.style.overflow = previousOverflow;
+          if (activeTrigger) {
+            activeTrigger.focus();
+          }
+          activeTrigger = null;
+        };
+
+        triggers.forEach((trigger) => {
+          trigger.addEventListener("click", () => {
+            const image = trigger.querySelector("img");
+            const figure = trigger.closest(".gallery-card");
+            const caption = figure ? figure.querySelector("figcaption") : null;
+
+            if (!image) {
+              return;
+            }
+
+            const rect = trigger.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const originX = `${Math.max(10, Math.min(90, (centerX / window.innerWidth) * 100))}%`;
+            const originY = `${Math.max(12, Math.min(88, ((rect.top + rect.height / 2) / window.innerHeight) * 100))}%`;
+            const shiftX = centerX < window.innerWidth * 0.42 ? "-42px" : centerX > window.innerWidth * 0.58 ? "42px" : "0px";
+
+            lightbox.style.setProperty("--lightbox-origin-x", originX);
+            lightbox.style.setProperty("--lightbox-origin-y", originY);
+            lightbox.style.setProperty("--lightbox-shift-x", shiftX);
+
+            lightboxImage.src = image.currentSrc || image.src;
+            lightboxImage.alt = image.alt || "";
+            lightboxImage.width = image.naturalWidth || image.width || 0;
+            lightboxImage.height = image.naturalHeight || image.height || 0;
+            lightboxCaption.textContent = caption ? caption.textContent.trim() : "";
+
+            previousOverflow = document.body.style.overflow;
+            document.body.style.overflow = "hidden";
+            document.body.classList.add("has-open-lightbox");
+            lightbox.hidden = false;
+            activeTrigger = trigger;
+            lightboxClose.focus();
+          });
+        });
+
+        lightboxClose.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", (event) => {
+          if (event.target === lightbox) {
+            closeLightbox();
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !lightbox.hidden) {
+            closeLightbox();
+          }
+        });
+      };
+
+      const initIntroSequence = () => {
+        if (!document.body) {
+          return;
+        }
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          return;
+        }
+
+        const introSteps = [
+          { selector: '[data-intro="hero"]', delay: 0 },
+          { selector: '[data-intro="nav"]', delay: 430 },
+          { selector: '[data-intro="menu"]', delay: 920 }
+        ];
+
+        introSteps.forEach(({ selector, delay }) => {
+          document.querySelectorAll(selector).forEach((node) => {
+            window.setTimeout(() => {
+              node.classList.add("is-intro-visible");
+            }, delay);
+          });
+        });
+
+        window.setTimeout(() => {
+          document.body.classList.remove("intro-sequence");
+        }, 2200);
+      };
+
+      const initNavScrollState = () => {
+        const nav = document.querySelector(".site-nav");
+        if (!nav) {
+          return;
+        }
+
+        const updateNavState = () => {
+          nav.classList.toggle("is-scrolled", window.scrollY > 24);
+        };
+
+        updateNavState();
+        window.addEventListener("scroll", updateNavState, { passive: true });
+      };
+
+      applyCatalogPricesToMenu();
+
       document.addEventListener("DOMContentLoaded", () => {
+        initIntroSequence();
+        initNavScrollState();
+        applyCatalogPricesToHighlights();
+        renderManualReviews();
+        initGalleryLightbox();
         // Batch DOM operations to avoid forced reflows
         requestAnimationFrame(() => {
           const yearSpan = document.getElementById("current-year");
@@ -682,6 +1212,45 @@
 
         let activeCategoryId = menuData[0].id;
         const buttons = [];
+
+        const renderMenuSection = (section) => {
+          const itemsHtml = (section.items || [])
+            .map((item) => {
+              const priceHtml = item.price
+                ? `<span class="menu-item-price">${item.price}</span>`
+                : "";
+              const descriptionHtml = item.description
+                ? `<p class="menu-item-description">${item.description}</p>`
+                : "";
+              return `
+                <li class="menu-item">
+                  <div class="menu-item-header">
+                    <span class="menu-item-name">${item.name}</span>
+                    ${priceHtml}
+                  </div>
+                  ${descriptionHtml}
+                </li>
+              `;
+            })
+            .join("");
+
+          const sectionTitle = section.title
+            ? `<h4>${section.title}</h4>`
+            : "";
+          const sectionNote = section.note
+            ? `<p class="menu-note">${section.note}</p>`
+            : "";
+
+          return `
+            <div class="menu-section">
+              ${sectionTitle}
+              <ul class="menu-items">
+                ${itemsHtml}
+              </ul>
+              ${sectionNote}
+            </div>
+          `;
+        };
 
         const setActiveCategory = (categoryId) => {
           const category = menuData.find((entry) => entry.id === categoryId);
@@ -704,55 +1273,8 @@
             });
 
             const sectionsHtml = category.sections
-              .map((section) => {
-                const itemsHtml = (section.items || [])
-                  .map((item) => {
-                    const priceHtml = item.price
-                      ? `<span class="menu-item-price">${item.price}</span>`
-                      : "";
-                    const translationHtml = (() => {
-                      const match = item.name.match(/^(\d+)/);
-                      if (!match) return "";
-                      const text = translationMap[Number(match[1])];
-                      return text
-                        ? `<p class="menu-item-translation">${text}</p>`
-                        : "";
-                    })();
-                    const descriptionHtml = item.description
-                      ? `<p class="menu-item-description">${item.description}</p>`
-                      : "";
-                    return `
-                      <li class="menu-item">
-                        <div class="menu-item-header">
-                          <span class="menu-item-name">${item.name}</span>
-                          ${priceHtml}
-                        </div>
-                        ${translationHtml}
-                        ${descriptionHtml}
-                      </li>
-                    `;
-                  })
-                  .join("");
-
-                const sectionTitle = section.title
-                  ? `<h4>${section.title}</h4>`
-                  : "";
-                const sectionNote = section.note
-                  ? `<p class="menu-note">${section.note}</p>`
-                  : "";
-
-                return `
-                  <div class="menu-section">
-                    ${sectionTitle}
-                    <ul class="menu-items">
-                      ${itemsHtml}
-                    </ul>
-                    ${sectionNote}
-                  </div>
-                `;
-              })
+              .map((section) => renderMenuSection(section))
               .join("");
-
             const descriptionHtml = category.description
               ? `<p class="menu-category-description">${category.description}</p>`
               : "";
@@ -879,6 +1401,19 @@
             e.preventDefault();
             errorMessage.hidden = true;
             errorMessage.textContent = '';
+            const requiredFields = Array.from(reservationForm.querySelectorAll('[required]'));
+            const firstMissing = requiredFields.find((field) => {
+              if (field.type === 'checkbox' || field.type === 'radio') {
+                return !field.checked;
+              }
+              return !field.value || !field.value.trim();
+            });
+            if (firstMissing) {
+              errorMessage.textContent = 'Bitte alle Felder ausfüllen';
+              errorMessage.hidden = false;
+              firstMissing.focus();
+              return;
+            }
             const submitBtn = reservationForm.querySelector('button[type="submit"]');
             if (submitBtn) {
               submitBtn.disabled = true;
@@ -901,15 +1436,27 @@
                 body: formData,
                 headers: { Accept: 'application/json' }
               });
-              const data = await response.json().catch(() => ({}));
+              const rawBody = await response.text();
+              let data = {};
+              try {
+                data = rawBody ? JSON.parse(rawBody) : {};
+              } catch (parseError) {
+                data = {};
+              }
               if (response.ok && (data.ok === true || response.status === 200)) {
                 formContainer.hidden = true;
                 successMessage.hidden = false;
               } else {
-                throw new Error(data.error || 'Fehler beim Senden');
+                const listErrors = Array.isArray(data.errors)
+                  ? data.errors.map((entry) => entry && entry.message).filter(Boolean)
+                  : [];
+                const apiMessage = data.error || listErrors.join(' ');
+                throw new Error(apiMessage || `Formspree-Fehler (HTTP ${response.status})`);
               }
             } catch (err) {
-              errorMessage.textContent = 'Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut.';
+              const detail = err && err.message ? ` (${err.message})` : '';
+              errorMessage.textContent = `Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut.${detail}`;
+              console.error('Reservation form submit failed:', err);
               errorMessage.hidden = false;
               if (submitBtn) {
                 submitBtn.disabled = false;
@@ -918,53 +1465,84 @@
             }
           });
         }
+
+        initQuickScrollReveal();
+        initSectionNav();
       });
+
+      const initSectionNav = () => {
+        const nav = document.querySelector(".site-nav");
+        const navLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+        if (!nav || !navLinks.length) {
+          return;
+        }
+
+        const linkMap = navLinks
+          .map((link) => {
+            const target = document.querySelector(link.getAttribute("href"));
+            if (!target) {
+              return null;
+            }
+            return { link, target };
+          })
+          .filter(Boolean);
+
+        if (!linkMap.length) {
+          return;
+        }
+
+        const setCurrentLink = (activeLink) => {
+          navLinks.forEach((link) => {
+            const isCurrent = link === activeLink;
+            link.classList.toggle("is-current", isCurrent);
+            if (isCurrent) {
+              link.setAttribute("aria-current", "page");
+            } else {
+              link.removeAttribute("aria-current");
+            }
+          });
+        };
+
+        const updateCurrentLink = () => {
+          const navOffset = nav.getBoundingClientRect().height + 28;
+          let active = null;
+
+          linkMap.forEach(({ link, target }) => {
+            const rect = target.getBoundingClientRect();
+            if (rect.top - navOffset <= 0) {
+              active = link;
+            }
+          });
+
+          setCurrentLink(active);
+        };
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            setCurrentLink(link);
+          });
+        });
+
+        updateCurrentLink();
+        window.addEventListener("scroll", updateCurrentLink, { passive: true });
+        window.addEventListener("resize", updateCurrentLink, { passive: true });
+      };
     </script>
     <div id="cookie-consent-overlay" class="cookie-consent-overlay" hidden></div>
     <div id="cookie-consent-banner" class="cookie-banner" hidden>
       <p class="cookie-banner-text">Wir verwenden keine Tracking-Cookies. Ihre Einwilligung speichern wir lokal im Browser. Google Maps kann Cookies setzen. Mehr in unserer <a href="Datenschutz.html">Datenschutzerklärung</a>.</p>
       <button type="button" id="cookie-consent-btn" class="primary-button">Verstanden</button>
     </div>
-    <script>
-      (function() {
-        function initCookieBanner() {
-          var overlay = document.getElementById('cookie-consent-overlay');
-          var banner = document.getElementById('cookie-consent-banner');
-          var btn = document.getElementById('cookie-consent-btn');
-          if (!banner || !btn) return;
-          function showBanner() {
-            banner.removeAttribute('hidden');
-            banner.classList.remove('cookie-banner--hidden');
-            if (overlay) {
-              overlay.removeAttribute('hidden');
-              overlay.classList.remove('cookie-banner--hidden');
-            }
-          }
-          function hideBanner() {
-            try { localStorage.setItem('cookie_consent', 'accepted'); } catch (e) {}
-            banner.setAttribute('hidden', '');
-            banner.classList.add('cookie-banner--hidden');
-            if (overlay) {
-              overlay.setAttribute('hidden', '');
-              overlay.classList.add('cookie-banner--hidden');
-            }
-          }
-          try {
-            if (!localStorage.getItem('cookie_consent')) showBanner();
-          } catch (e) { showBanner(); }
-          if (overlay) {
-            overlay.addEventListener('click', function(ev) { ev.preventDefault(); ev.stopPropagation(); hideBanner(); });
-            overlay.addEventListener('touchend', function(ev) { ev.preventDefault(); hideBanner(); }, { passive: false });
-          }
-          btn.addEventListener('click', function(ev) { ev.preventDefault(); ev.stopPropagation(); hideBanner(); });
-          btn.addEventListener('touchend', function(ev) { ev.preventDefault(); ev.stopPropagation(); hideBanner(); }, { passive: false });
-        }
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', initCookieBanner);
-        } else {
-          initCookieBanner();
-        }
-      })();
-    </script>
+    <div class="gallery-lightbox" id="gallery-lightbox" hidden>
+      <button class="gallery-lightbox-close" id="gallery-lightbox-close" type="button" aria-label="Vergrößertes Bild schließen">Schließen</button>
+      <figure class="gallery-lightbox-figure" id="gallery-lightbox-figure">
+        <img id="gallery-lightbox-image" alt="" />
+        <figcaption id="gallery-lightbox-caption"></figcaption>
+      </figure>
+    </div>
+    <script src="site-shared.js" defer></script>
   </body>
 </html>
+
+
+
